@@ -1,0 +1,23 @@
+{
+  "name": "we_all_rise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dy-fi/We_All_Rise.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dy-fi/We_All_Rise/issues"
+  },
+  "homepage": "https://github.com/dy-fi/We_All_Rise#readme",
+  "dependencies": {
+    "openzeppelin-solidity": "^2.3.0",
+    "zeppelin-solidity": "^1.5.0"
+  }
+}
