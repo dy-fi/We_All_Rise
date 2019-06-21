@@ -1,0 +1,104 @@
+{
+  "contractName": "Rise",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/dylanfinn/dev/We_All_Rise/contracts/rise.sol\":\"Rise\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/dylanfinn/dev/We_All_Rise/contracts/rise.sol\":{\"keccak256\":\"0xf946e75f7afa80c9e62c9e4dd39412fc3da74bc14fa8ed02bb9b003c7c17eaa6\",\"urls\":[\"bzzr://a8fe89bb826a9a37f992378ea93a8bffdc39341727ee4cc69c608f08c6fc6467\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a7230582009b7addc8b8b622b71b09afee2ec0b0bc2e2fc9e3d9598a1407931a3bb6ef2a70029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a7230582009b7addc8b8b622b71b09afee2ec0b0bc2e2fc9e3d9598a1407931a3bb6ef2a70029",
+  "sourceMap": "26:18:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:18:1;;;;;;;",
+  "deployedSourceMap": "26:18:1:-;;;;;",
+  "source": "pragma solidity >=0.5.0;\n\ncontract Rise {\n\n}",
+  "sourcePath": "/Users/dylanfinn/dev/We_All_Rise/contracts/rise.sol",
+  "ast": {
+    "absolutePath": "/Users/dylanfinn/dev/We_All_Rise/contracts/rise.sol",
+    "exportedSymbols": {
+      "Rise": [
+        59
+      ]
+    },
+    "id": 60,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 59,
+        "linearizedBaseContracts": [
+          59
+        ],
+        "name": "Rise",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 60,
+        "src": "26:18:1"
+      }
+    ],
+    "src": "0:44:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/dylanfinn/dev/We_All_Rise/contracts/rise.sol",
+    "exportedSymbols": {
+      "Rise": [
+        59
+      ]
+    },
+    "id": 60,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 58,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 59,
+        "linearizedBaseContracts": [
+          59
+        ],
+        "name": "Rise",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 60,
+        "src": "26:18:1"
+      }
+    ],
+    "src": "0:44:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.11",
+  "updatedAt": "2019-06-18T23:09:06.087Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
