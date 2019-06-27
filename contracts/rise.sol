@@ -17,7 +17,6 @@ contract Rise is Ownable {
     using SafeMath for uint16;
     using SafeMath for uint;
 
-    uint perFactorFee = 0.001 ether;
 
     event NewNodelet(uint nodeletId, string name, string gitUrl, uint when);
     event InitializedNodelet(uint name, uint gitUrl, uint when);
@@ -33,7 +32,7 @@ contract Rise is Ownable {
         uint256 goodUntil;
     }
 
-    /// @dev indexed by 1
+    /// @notice indexed by 1
     Nodelet[] public nodelets;
 
     mapping (uint => address) public nodeletToOwner;
@@ -44,8 +43,10 @@ contract Rise is Ownable {
         _;
     }
 
-    // nodelet constructor
-    /// @dev no logic relies on timestamps, so "now" is safe in this case
+    /// @dev nodelet constructor
+    /// @notice no logic relies on timestamps, so "now" is safe in this case
+    /// @param name new node name
+    /// @param _url github url with source code
     function _newNodelet(string memory _name, string memory _url) internal {
         uint id = nodelets.push(Nodelet(_name, _url, "new", false, 0, 0, now, now));
         nodeletToOwner[id] = msg.sender;
@@ -54,6 +55,9 @@ contract Rise is Ownable {
     }
 
     /// @dev calculates when the nodelet is good until given it's factor and amount
+    /// @notice timestamp logic uses safemath and the node does not run until initialized anyways
+    /// @param factor is the integer representation of the current resources this node uses
+    /// @param amount is the amount paid towards the goodUntil date
     function _goodUntil(uint16 factor, uint256 amount) internal view returns (uint) {
         if (amount == 0) {
             return now;
@@ -64,7 +68,8 @@ contract Rise is Ownable {
         }
     }
 
-    // initialize a nodelet
+    /// @dev initialize a nodelet
+    /// @notice no logic relies on timestamps, so "now" is safe in this case
     function _initializeNodelet(uint _id) external payable onlyOwnerOf(_id) {
         nodelets[_id].initialized = true;
         nodelets[_id].dateInitialized = now;
