@@ -3,7 +3,7 @@ pragma solidity >=0.5.0;
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-/// @dev This is the core behavior smart contract
+/// @notice This is the core behavior smart contract
 /// for a non-fungible and decentralized cloud hosting service,
 /// designed for freedom, privacy, and fair pricing
 
@@ -18,12 +18,12 @@ contract Rise is Ownable {
     using SafeMath for uint;
 
 
-    event NewNodelet(uint nodeletId, string name, string gitUrl, uint when);
-    event InitializedNodelet(uint name, uint gitUrl, uint when);
+    event NewNodelet(uint nodeletId, string name, string urlHash, uint when);
+    event InitializedNodelet(uint name, uint urlHash, uint when);
 
     struct Nodelet {
         string name;
-        string gitURL;
+        string urlHash;
         string status;
         bool initialized;
         uint16 factor;
@@ -48,7 +48,8 @@ contract Rise is Ownable {
     /// @param name new node name
     /// @param _url github url with source code
     function _newNodelet(string memory _name, string memory _url) internal {
-        uint id = nodelets.push(Nodelet(_name, _url, "new", false, 0, 0, now, now));
+        uint _urlHash = uint(keccak256(abi.encodePacked(_url)));
+        uint id = nodelets.push(Nodelet(_name, _urlHash, "new", false, 0, 0, now, now));
         nodeletToOwner[id] = msg.sender;
         ownerNodeletCount[msg.sender] = ownerNodeletCount[msg.sender].add(1);
         emit NewNodelet(id, _name, _url, now);
