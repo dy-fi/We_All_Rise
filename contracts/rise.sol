@@ -71,8 +71,10 @@ contract Rise is Ownable {
     /// @dev initialize a nodelet
     /// @notice no logic relies on timestamps, so "now" is safe in this case
     function _initializeNodelet(uint _id) external payable onlyOwnerOf(_id) {
-        nodelets[_id].initialized = true;
-        nodelets[_id].dateInitialized = now;
-        nodelets[_id].goodUntil = _goodUntil(nodelets[_id].factor, msg.value);
+        Nodelet curr = nodelets[_id];
+        curr.initialized = true;
+        curr.dateInitialized = now;
+        curr.goodUntil = _goodUntil(nodelets[_id].factor, msg.value);
+        emit InitializedNodelet(curr.name, curr.gitUrl, now);
     }
 }
