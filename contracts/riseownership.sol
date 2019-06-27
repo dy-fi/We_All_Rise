@@ -4,7 +4,7 @@ import "./rise.sol";
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol";
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
-
+/// @dev Rise nodelet token behavior
 contract RiseOwnership is Rise, ERC721 {
 
   using SafeMath for uint256;

@@ -3,6 +3,8 @@ pragma solidity >=0.5.0;
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "./Rise.sol";
 
+/// @title RiseHelper
+/// @dev Rise contract business and data logic
 contract RiseHelper is Rise {
 
     uint perFactorFee = 0.001 ether;

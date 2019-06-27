@@ -11,12 +11,12 @@ import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 /// @author Dylan Finn
 /// @notice draft and mvp design
 /// @dev conforms to the ERC721 non-fungible token standard
+/// @dev Rise contract behavior and framework
 contract Rise is Ownable {
     using SafeMath for uint256;
     using SafeMath for uint32;
     using SafeMath for uint16;
     using SafeMath for uint;
-
 
     event NewNodelet(uint nodeletId, string name, string urlHash, uint when);
     event InitializedNodelet(uint name, uint urlHash, uint when);
