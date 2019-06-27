@@ -18,22 +18,26 @@ contract Rise is Ownable {
     using SafeMath for uint16;
     using SafeMath for uint;
 
-    event NewNodelet(uint nodeletId, string name, string urlHash, uint when);
-    event InitializedNodelet(uint name, uint urlHash, uint when);
+    event NewNodelet(string name, uint nodeletId, uint urlHash, uint when);
+    event InitializedNodelet(string name, uint nodeletId, uint urlHash, uint when);
 
     struct Nodelet {
         string name;
-        string urlHash;
         string status;
         bool initialized;
         uint16 factor;
+        uint256 urlHash;
         uint256 dateCreated;
         uint256 dateInitialized;
         uint256 goodUntil;
     }
 
+    /// @dev master nodelet list
     /// @notice indexed by 1
     Nodelet[] public nodelets;
+
+    /// @dev per-factor fee
+    uint perFactorFee = 0.001 ether;
 
     mapping (uint => address) public nodeletToOwner;
     mapping (address => uint) ownerNodeletCount;
@@ -45,14 +49,14 @@ contract Rise is Ownable {
 
     /// @dev nodelet constructor
     /// @notice no logic relies on timestamps, so "now" is safe in this case
-    /// @param name new node name
+    /// @param _name new node name
     /// @param _url github url with source code
-    function _newNodelet(string memory _name, string memory _url) internal {
+    function _newNodelet(string memory _name, string memory _url) internal returns (uint) {
         uint _urlHash = uint(keccak256(abi.encodePacked(_url)));
-        uint id = nodelets.push(Nodelet(_name, _urlHash, "new", false, 0, 0, now, now));
+        uint id = nodelets.push(Nodelet(_name, "new", false, 0, _urlHash, 0, now, 0));
         nodeletToOwner[id] = msg.sender;
         ownerNodeletCount[msg.sender] = ownerNodeletCount[msg.sender].add(1);
-        emit NewNodelet(id, _name, _url, now);
+        emit NewNodelet(_name, id, _urlHash, now);
     }
 
     /// @dev calculates when the nodelet is good until given it's factor and amount
@@ -71,11 +75,16 @@ contract Rise is Ownable {
 
     /// @dev initialize a nodelet
     /// @notice no logic relies on timestamps, so "now" is safe in this case
-    function _initializeNodelet(uint _id) external payable onlyOwnerOf(_id) {
-        Nodelet curr = nodelets[_id];
+    function _initializeNodelet(uint _id) public payable onlyOwnerOf(_id) {
+        Nodelet memory curr = nodelets[_id];
         curr.initialized = true;
         curr.dateInitialized = now;
         curr.goodUntil = _goodUntil(nodelets[_id].factor, msg.value);
-        emit InitializedNodelet(curr.name, curr.gitUrl, now);
+        emit InitializedNodelet(curr.name, _id, curr.urlHash, now);
+    }
+
+    /// @dev set the per-factor fee
+    function setPerFactorFee(uint _fee) external onlyOwner {
+        perFactorFee = _fee;
     }
 }
