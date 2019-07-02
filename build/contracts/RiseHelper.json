@@ -2880,9 +2880,16 @@
     "name": "solc",
     "version": "0.5.8+commit.23d335f2.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xDbdd330BEF5C272c39bB481ea65F3aA323FF97Ad",
+      "transactionHash": "0x2fa03345a69e6b20e26c6b17eb695af2c367ad121a87d3e79f490aba58304f19"
+    }
+  },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-06-27T23:14:18.298Z",
+  "updatedAt": "2019-07-02T21:16:45.822Z",
   "devdoc": {
     "details": "Rise contract business and data logic",
     "methods": {

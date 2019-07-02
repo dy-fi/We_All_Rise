@@ -84,6 +84,7 @@ contract Rise is Ownable {
     }
 
     /// @dev set the per-factor fee
+    /// @param _fee is the new fee
     function setPerFactorFee(uint _fee) external onlyOwner {
         perFactorFee = _fee;
     }

@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/dy-fi/We_All_Rise#readme",
   "dependencies": {
+    "ganache-cli": "^6.4.4",
     "openzeppelin-solidity": "^2.3.0",
     "zeppelin-solidity": "^1.5.0"
   },
